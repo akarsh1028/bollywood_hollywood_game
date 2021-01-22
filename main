@@ -1,0 +1,64 @@
+import java.util.*;
+import java.lang.*;
+public class bollywood {
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        String movie=sc.nextLine();
+        char[] movie1=new char[movie.length()];
+        int i=0;
+        int hc=0;
+        for(int j=0;j<movie.length();j++){
+            if(movie.charAt(j)!='a' && movie.charAt(j)!='e' && movie.charAt(j)!='i' && movie.charAt(j)!='o' && movie.charAt(j)!='u' && movie.charAt(j)!='A' && movie.charAt(j)!='E' && movie.charAt(j)!='I' && movie.charAt(j)!='O' && movie.charAt(j)!='U'){
+               if(movie.charAt(j)==' ')
+               {
+
+                   hc--;
+               }
+                movie1[j]='_';
+                hc++;
+            }
+
+            else{
+                movie1[j]=movie.charAt(j);
+            }
+        }
+        int userscore=9;
+        for(int p=0;p<movie1.length;p++){
+            System.out.print(movie1[p]);
+        }
+        while(true){
+            int flag=1;
+
+            char t=sc.next().charAt(0);
+            for(int y=0;y<movie.length();y++){
+                if(movie.charAt(y)==t){
+                    movie1[y]=t;
+                    hc--;
+                    flag=1;
+                }
+                else{
+                    flag=0;
+                }
+            }
+            for(int p=0;p<movie1.length;p++){
+               System.out.print(movie1[p]);
+            }
+
+            String s=Character.toString(t);
+            if(!movie.contains(s)){
+                userscore--;
+            }
+            System.out.println("                      "+"Your score right now =   "+userscore);
+            if(userscore==0){
+                System.out.print("You Loose");
+                break;
+            }
+            else if(hc==0){
+                System.out.println("You guessed the movie with score =  "+userscore);
+                break;
+            }
+        }
+
+
+    }
+}
